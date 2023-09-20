@@ -10,9 +10,13 @@ export default function CreateBlog() {
   const [postText, setPostText] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [checkUser, setCheckUser] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Track loading state
 
   const postCollectionRef = collection(db, 'blog');
   const navigate = useNavigate();
+
+  // Get the current timestamp
+  const timestamp = new Date();
 
   const createPost = async () => {
     // Upload the selected image first
@@ -25,18 +29,27 @@ export default function CreateBlog() {
       imageUrl = downloadUrl;
     }
 
-    // Add the post to Firestore with the image URL
-    await addDoc(postCollectionRef, {
-      title,
-      postText,
-      imageUrl, // Add the URL here
-      author: {
-        name: auth.currentUser.displayName,
-        id: auth.currentUser.uid,
-      },
-    });
+    setIsLoading(true); // Set loading to true while submitting
 
-    navigate('/');
+    // Add the post to Firestore with the image URL
+    try {
+      await addDoc(postCollectionRef, {
+        title,
+        postText,
+        imageUrl,
+        author: {
+          name: auth.currentUser.displayName,
+          id: auth.currentUser.uid,
+        },
+        createdAt: timestamp,
+      });
+
+      setIsLoading(false); // Set loading to false after successful submission
+      navigate('/');
+    } catch (error) {
+      console.error('Error creating post:', error);
+      setIsLoading(false); // Set loading to false in case of an error
+    }
   };
 
   useEffect(() => {
@@ -75,7 +88,11 @@ export default function CreateBlog() {
             />
           </div>
 
-          <button onClick={createPost}>Submit Post</button>
+          {isLoading ? (
+            <div>Loading...</div> // Show loading indicator while submitting
+          ) : (
+            <button onClick={createPost}>Submit Post</button>
+          )}
         </div>
       ) : (
         <div className="text-center p-3">
