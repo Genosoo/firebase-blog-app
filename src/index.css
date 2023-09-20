@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  
+  .navbar{
+    @apply flex justify-around p-3 mt-10 font-montserrat
+  }
+
+  .linkWrapper{
+    @apply flex items-center gap-5
+  }
+
+  .link{
+      @apply 
+      transition
+      text-sm 
+      font-medium
+    text-neutral-900 
+    hover:bg-stone-800 
+    hover:text-white
+    p-2
+    rounded-sm
+  }
+
+  .logo{
+    @apply text-lg uppercase text-stone-800 font-bold tracking-widest
+  }
+
+  .logoutBtn{
+    @apply bg-slate-500 flex  p-2 text-white text-lg rounded hover:bg-stone-800
+  }
+
+
+  .loginContainer{
+    @apply 
+      flex flex-col 
+      items-center 
+      justify-center 
+      p-4
+  }
+
+  .loginBtn{
+    @apply 
+      bg-slate-600 
+        p-2 
+        rounded 
+        text-white 
+        mt-2 
+        hover:bg-slate-900
+   }
+
+   .postContainer{
+    @apply 
+      flex 
+      flex-col
+      items-center
+      p-10
+   }
+
+   .postBox{
+    @apply
+      font-montserrat
+      p-5
+      flex
+      flex-col
+      gap-4
+      rounded
+      md:w-[50%]
+      w-[100%]
+   }
+
+   .postBox h1{
+    @apply
+      text-slate-800
+      text-3xl
+      font-semibold
+   }
+
+   .postBox button{
+    @apply 
+    bg-slate-600 text-white p-3 rounded hover:bg-slate-900
+   }
+
+   .inputWrapper{
+    @apply
+      flex
+      flex-col
+   }
+
+   .inputWrapper label{
+    @apply
+    text-lg
+   }
+
+   .inputWrapper input{
+    @apply
+    rounded
+    p-3
+    bg-slate-100
+   }
+
+   .inputWrapper textarea{
+    @apply bg-slate-100  p-4
+   }
+
+   .homeContainer{
+    @apply  flex flex-col items-center justify-center p-20
+   }
+
+   .postCard{
+    @apply rounded-sm bg-gray-100 m-3 p-4 w-[300px] lg:w-[50%]
+   }
+
+   .postTitle{
+    @apply text-lg font-semibold my-2 text-slate-700
+   }
+
+   .postDesc{
+    @apply text-slate-900 p-2
+   }
+
+   .postAuthor{
+    @apply text-sm text-slate-600
+   }
+  
+}
+
+
