@@ -14,6 +14,7 @@
 
   .link{
       @apply 
+      block
       transition
       text-sm 
       font-medium
@@ -110,7 +111,7 @@
    }
 
    .postCard{
-    @apply rounded-sm bg-gray-100 m-3 p-4 w-[300px] lg:w-[50%]
+    @apply rounded-sm bg-gray-100 m-3 p-4 w-[350px] md:w-[90%] lg:w-[50%] relative
    }
 
    .postTitle{
@@ -121,9 +122,43 @@
     @apply text-slate-900 p-2
    }
 
+   .postImage{
+    @apply h-[300px] w-[100%] object-cover
+   }
+
    .postAuthor{
     @apply text-sm text-slate-600
    }
+   .btnAction{
+    @apply flex gap-2 absolute bottom-3 right-3
+   }
+
+   .btnDelete{
+    border-radius:50%;
+    transition:200ms;
+    @apply bg-red-300 p-2  text-orange-600 hover:bg-slate-700
+   }
+
+   .btnUpdate{
+    border-radius:50%;
+    transition:200ms;
+    @apply bg-green-200 p-2 text-green-500 hover:bg-slate-700
+   }
+
+
+   .updateContainer{
+    @apply container mx-auto flex items-center justify-center py-20
+   }
+
+   .updateWrapper{
+    @apply lg:w-[80%] flex flex-col gap-5
+   }
+
+   .updateWrapper textarea{
+    height:200px;
+   }
+
+   
   
 }
 

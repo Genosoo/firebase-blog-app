@@ -29,6 +29,8 @@ export default function Navbar({ isAuth, setIsAuth }) {
             : 
             <>
                 <Link className="link"  to='/create-blog'>CreateBlog</Link>
+                <span className="text-sm text-orange-400 font-medium"> Hello User!</span>
+
                 <button onClick={signUserOut} className="logoutBtn">
                    <BiLogOutCircle/>
                 </button>
